@@ -1,7 +1,7 @@
 
-# WebbDiffuser
+# HubbleDiffuser
 
-Stable Diffusion for James Webb &amp; Hubble Telescope Images
+Stable Diffusion for Hubble Telescope Images
 
 ## Preprocessing
 
