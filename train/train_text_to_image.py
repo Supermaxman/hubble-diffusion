@@ -668,11 +668,11 @@ def main():
         if args.max_train_samples is not None:
             dataset["train"] = dataset["train"].select(range(args.max_train_samples))
         # Set the training transforms
-        train_dataset = (
-            dataset["train"]
-            .filter(lambda example: check_image(example))
-            .shuffle(seed=args.seed)
-        )
+        train_dataset = dataset["train"].filter(lambda example: check_image(example))
+        if args.dataset_streaming:
+            train_dataset = train_dataset.shuffle(seed=args.seed, buffer_size=100)
+        else:
+            train_dataset = train_dataset.shuffle(seed=args.seed)
 
     def collate_fn(examples):
         pixel_values = torch.stack(
