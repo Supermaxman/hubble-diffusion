@@ -687,7 +687,7 @@ def main():
     # Scheduler and math around the number of training steps.
     overrode_max_train_steps = False
     num_update_steps_per_epoch = math.ceil(
-        len(train_dataloader) / args.gradient_accumulation_steps
+        (len(train_dataset) // args.train_batch_size) / args.gradient_accumulation_steps
     )
     if args.max_train_steps is None:
         args.max_train_steps = args.num_train_epochs * num_update_steps_per_epoch
