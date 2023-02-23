@@ -650,15 +650,8 @@ def main():
     # Preprocessing the datasets.
     train_transforms = transforms.Compose(
         [
-            transforms.Resize(
-                args.resolution, interpolation=transforms.InterpolationMode.BILINEAR
-            ),
-            transforms.CenterCrop(args.resolution)
-            if args.center_crop
-            else transforms.RandomCrop(args.resolution),
-            transforms.RandomHorizontalFlip()
-            if args.random_flip
-            else transforms.Lambda(lambda x: x),
+            transforms.RandomCrop(args.resolution),
+            transforms.RandomHorizontalFlip(),
             transforms.ToTensor(),
             transforms.Normalize([0.5], [0.5]),
         ]
@@ -672,7 +665,7 @@ def main():
 
     def collate_fn(examples):
         pixel_values = torch.stack(
-            [train_transforms(ex[image_column].convert("RGB")) for ex in examples]
+            [train_transforms(ex[image_column]) for ex in examples]
         )
         pixel_values = pixel_values.to(memory_format=torch.contiguous_format).float()
         input_ids = tokenize_captions(examples)
