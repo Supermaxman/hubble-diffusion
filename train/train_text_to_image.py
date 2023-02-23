@@ -657,12 +657,6 @@ def main():
         ]
     )
 
-    def preprocess_train(examples):
-        images = [image.convert("RGB") for image in examples[image_column]]
-        examples["pixel_values"] = [train_transforms(image) for image in images]
-        examples["input_ids"] = tokenize_captions(examples)
-        return examples
-
     with accelerator.main_process_first():
         if args.max_train_samples is not None:
             dataset["train"] = (
@@ -671,12 +665,14 @@ def main():
                 .select(range(args.max_train_samples))
             )
         # Set the training transforms
-        train_dataset = dataset["train"].with_transform(preprocess_train)
+        train_dataset = dataset["train"]
 
     def collate_fn(examples):
-        pixel_values = torch.stack([example["pixel_values"] for example in examples])
+        pixel_values = torch.stack(
+            [train_transforms(image.convert("RGB")) for image in examples[image_column]]
+        )
         pixel_values = pixel_values.to(memory_format=torch.contiguous_format).float()
-        input_ids = torch.stack([example["input_ids"] for example in examples])
+        input_ids = tokenize_captions(examples)
         return {"pixel_values": pixel_values, "input_ids": input_ids}
 
     # DataLoaders creation:
