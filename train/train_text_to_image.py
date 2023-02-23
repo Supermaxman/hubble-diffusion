@@ -35,8 +35,13 @@ from datasets import load_dataset
 from huggingface_hub import HfFolder, Repository, create_repo, whoami
 from packaging import version
 from torchvision import transforms
-from tqdm.auto import tqdm
 from transformers import CLIPTextModel, CLIPTokenizer
+
+from tqdm.rich import tqdm
+import PIL
+from PIL import Image
+
+PIL.Image.MAX_IMAGE_PIXELS = 1e20
 
 import diffusers
 from diffusers import (
@@ -393,11 +398,6 @@ def get_full_repo_name(
         return f"{organization}/{model_id}"
 
 
-dataset_name_mapping = {
-    "lambdalabs/pokemon-blip-captions": ("image", "text"),
-}
-
-
 def main():
     args = parse_args()
 
@@ -657,11 +657,22 @@ def main():
         ]
     )
 
+    def check_image(example):
+        image = example[image_column]
+        w, h = image.size
+        if w < args.resolution or h < args.resolution:
+            return False
+        return True
+
     with accelerator.main_process_first():
         if args.max_train_samples is not None:
             dataset["train"] = dataset["train"].select(range(args.max_train_samples))
         # Set the training transforms
-        train_dataset = dataset["train"].shuffle(seed=args.seed)
+        train_dataset = (
+            dataset["train"]
+            .filter(lambda example: check_image(example))
+            .shuffle(seed=args.seed)
+        )
 
     def collate_fn(examples):
         pixel_values = torch.stack(
