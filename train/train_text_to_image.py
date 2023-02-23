@@ -90,6 +90,12 @@ def parse_args():
         help="The config of the Dataset, leave as None if there's only one config.",
     )
     parser.add_argument(
+        "--dataset_streaming",
+        action="store_true",
+        help="Whether or not to use streaming for large datasets.",
+    )
+
+    parser.add_argument(
         "--train_data_dir",
         type=str,
         default=None,
@@ -593,6 +599,7 @@ def main():
             args.dataset_name,
             args.dataset_config_name,
             cache_dir=args.cache_dir,
+            streaming=args.streaming,
         )
     else:
         data_files = {}
