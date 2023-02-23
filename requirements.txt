@@ -1,0 +1,13 @@
+scrapy
+tqdm
+rich
+pillow
+numpy
+git+https://github.com/huggingface/diffusers.git#egg=diffusers
+git+https://github.com/huggingface/datasets.git#egg=datasets
+accelerate
+torchvision
+transformers
+ftfy
+tensorboard
+Jinja2
