@@ -98,9 +98,7 @@ def parse_args():
         "--dataset_size",
         type=int,
         default=None,
-        help=(
-            "Size of the dataset to use for training with streaming"
-        ),
+        help=("Size of the dataset to use for training with streaming"),
     )
 
     parser.add_argument(
@@ -629,7 +627,8 @@ def main():
     # We need to tokenize input captions and transform the images.
     def tokenize_captions(examples, is_train=True):
         captions = []
-        for caption in examples[caption_column]:
+        for ex in examples:
+            caption = ex[caption_column]
             if isinstance(caption, str):
                 captions.append(caption)
             elif isinstance(caption, (list, np.ndarray)):
@@ -673,7 +672,7 @@ def main():
 
     def collate_fn(examples):
         pixel_values = torch.stack(
-            [train_transforms(image.convert("RGB")) for image in examples[image_column]]
+            [train_transforms(ex[image_column].convert("RGB")) for ex in examples]
         )
         pixel_values = pixel_values.to(memory_format=torch.contiguous_format).float()
         input_ids = tokenize_captions(examples)
