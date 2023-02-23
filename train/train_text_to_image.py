@@ -94,6 +94,14 @@ def parse_args():
         action="store_true",
         help="Whether or not to use streaming for large datasets.",
     )
+    parser.add_argument(
+        "--dataset_size",
+        type=int,
+        default=None,
+        help=(
+            "Size of the dataset to use for training with streaming"
+        ),
+    )
 
     parser.add_argument(
         "--train_data_dir",
@@ -659,13 +667,9 @@ def main():
 
     with accelerator.main_process_first():
         if args.max_train_samples is not None:
-            dataset["train"] = (
-                dataset["train"]
-                .shuffle(seed=args.seed)
-                .select(range(args.max_train_samples))
-            )
+            dataset["train"] = dataset["train"].select(range(args.max_train_samples))
         # Set the training transforms
-        train_dataset = dataset["train"]
+        train_dataset = dataset["train"].shuffle(seed=args.seed)
 
     def collate_fn(examples):
         pixel_values = torch.stack(
@@ -683,11 +687,15 @@ def main():
         batch_size=args.train_batch_size,
         num_workers=args.dataloader_num_workers,
     )
+    dataset_size = (
+        len(train_dataset) if not args.dataset_streaming else args.dataset_size
+    )
+    dataloader_size = int(math.ceil(dataset_size / args.train_batch_size))
 
     # Scheduler and math around the number of training steps.
     overrode_max_train_steps = False
     num_update_steps_per_epoch = math.ceil(
-        (len(train_dataset) // args.train_batch_size) / args.gradient_accumulation_steps
+        dataloader_size / args.gradient_accumulation_steps
     )
     if args.max_train_steps is None:
         args.max_train_steps = args.num_train_epochs * num_update_steps_per_epoch
@@ -722,7 +730,7 @@ def main():
 
     # We need to recalculate our total training steps as the size of the training dataloader may have changed.
     num_update_steps_per_epoch = math.ceil(
-        len(train_dataloader) / args.gradient_accumulation_steps
+        dataloader_size / args.gradient_accumulation_steps
     )
     if overrode_max_train_steps:
         args.max_train_steps = args.num_train_epochs * num_update_steps_per_epoch
@@ -742,7 +750,7 @@ def main():
     )
 
     logger.info("***** Running training *****")
-    logger.info(f"  Num examples = {len(train_dataset)}")
+    logger.info(f"  Num examples = {dataset_size}")
     logger.info(f"  Num Epochs = {args.num_train_epochs}")
     logger.info(f"  Instantaneous batch size per device = {args.train_batch_size}")
     logger.info(
