@@ -599,7 +599,7 @@ def main():
             args.dataset_name,
             args.dataset_config_name,
             cache_dir=args.cache_dir,
-            streaming=args.streaming,
+            streaming=args.dataset_streaming,
         )
     else:
         data_files = {}
