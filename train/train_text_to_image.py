@@ -31,7 +31,7 @@ import transformers
 from accelerate import Accelerator
 from accelerate.logging import get_logger
 from accelerate.utils import ProjectConfiguration, set_seed
-from datasets import load_dataset
+from datasets import load_dataset, DownloadConfig
 from huggingface_hub import HfFolder, Repository, create_repo, whoami
 from packaging import version
 from torchvision import transforms
@@ -582,13 +582,21 @@ def main():
     # In distributed training, the load_dataset function guarantees that only one local process can concurrently
     # download the dataset.
     if args.dataset_name is not None:
+        download_config = DownloadConfig(
+            num_processes=8,
+            max_retries=2,
+        )
         # Downloading and loading a dataset from the hub.
         dataset = load_dataset(
             args.dataset_name,
             args.dataset_config_name,
             cache_dir=args.cache_dir,
             streaming=args.dataset_streaming,
+            download_config=download_config,
         )
+        train_dataset = dataset["train"]
+        if not args.dataset_streaming:
+            train_dataset = train_dataset.to_iterable_dataset()
     else:
         data_files = {}
         if args.train_data_dir is not None:
@@ -598,6 +606,7 @@ def main():
             data_files=data_files,
             cache_dir=args.cache_dir,
         )
+        train_dataset = dataset["train"]
         # See more about loading custom images at
         # https://huggingface.co/docs/datasets/v2.4.0/en/image_load#imagefolder
 
@@ -649,9 +658,9 @@ def main():
 
     with accelerator.main_process_first():
         if args.max_train_samples is not None:
-            dataset["train"] = dataset["train"].select(range(args.max_train_samples))
+            train_dataset = train_dataset.select(range(args.max_train_samples))
         # Set the training transforms
-        train_dataset = dataset["train"].filter(lambda example: check_image(example))
+        train_dataset = train_dataset.filter(lambda example: check_image(example))
         if args.dataset_streaming:
             train_dataset = train_dataset.shuffle(seed=args.seed, buffer_size=100)
         else:
