@@ -583,7 +583,7 @@ def main():
     # download the dataset.
     if args.dataset_name is not None:
         download_config = DownloadConfig(
-            num_processes=8,
+            num_proc=8,
             max_retries=2,
         )
         # Downloading and loading a dataset from the hub.
