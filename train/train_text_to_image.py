@@ -99,12 +99,6 @@ def parse_args():
         action="store_true",
         help="Whether or not to use streaming for large datasets.",
     )
-    parser.add_argument(
-        "--dataset_size",
-        type=int,
-        default=None,
-        help=("Size of the dataset to use for training with streaming"),
-    )
 
     parser.add_argument(
         "--train_data_dir",
@@ -161,6 +155,7 @@ def parse_args():
             " resolution"
         ),
     )
+    # TODO add support for vertical and horizontal flips
     parser.add_argument(
         "--random_flip",
         action="store_true",
@@ -679,7 +674,9 @@ def main():
         num_workers=args.dataloader_num_workers,
     )
     dataset_size = (
-        len(train_dataset) if not args.dataset_streaming else args.dataset_size
+        len(train_dataset)
+        if not args.dataset_streaming
+        else train_dataset.info.splits["train"].num_examples
     )
     dataloader_size = int(math.ceil(dataset_size / args.train_batch_size))
 
