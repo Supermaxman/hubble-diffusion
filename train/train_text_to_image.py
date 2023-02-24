@@ -655,10 +655,7 @@ def main():
             train_dataset = train_dataset.select(range(args.max_train_samples))
         # Set the training transforms
         train_dataset = train_dataset.filter(lambda example: check_image(example))
-        if args.dataset_streaming:
-            train_dataset = train_dataset.shuffle(seed=args.seed, buffer_size=100)
-        else:
-            train_dataset = train_dataset.shuffle(seed=args.seed)
+        train_dataset = train_dataset.shuffle(seed=args.seed, buffer_size=100)
 
     def collate_fn(examples):
         pixel_values = torch.stack(
