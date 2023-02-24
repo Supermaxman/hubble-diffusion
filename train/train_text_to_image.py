@@ -650,8 +650,7 @@ def main():
     )
 
     def check_image(example):
-        image = example[image_column]
-        w, h = image.size
+        w, h = example["width"], example["height"]
         if w < args.resolution or h < args.resolution:
             return False
         return True
