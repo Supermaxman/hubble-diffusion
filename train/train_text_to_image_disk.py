@@ -667,11 +667,8 @@ def main():
         return examples
 
     with accelerator.main_process_first():
-        if args.max_train_samples is not None:
-            dataset["train"] = dataset["train"].shuffle(seed=args.seed)
-            dataset["train"] = dataset["train"].filter(
-                lambda example: check_image(example)
-            )
+        dataset["train"] = dataset["train"].shuffle(seed=args.seed)
+        dataset["train"] = dataset["train"].filter(lambda example: check_image(example))
         # Set the training transforms
         train_dataset = dataset["train"].with_transform(preprocess_train)
 
