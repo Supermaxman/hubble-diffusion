@@ -53,6 +53,18 @@ from diffusers.optimization import get_scheduler
 from diffusers.training_utils import EMAModel
 from diffusers.utils import check_min_version, deprecate
 from diffusers.utils.import_utils import is_xformers_available
+import torchvision.transforms.functional as TF
+
+
+class ResizeIfSmaller:
+    def __init__(self, size):
+        self.size = size
+
+    def __call__(self, x):
+        w, h = x.size
+        if w < self.size or h < self.size:
+            return TF.resize(x, self.size)
+        return x
 
 
 # Will error if the minimal version of diffusers is not installed. Remove at your own risks.
@@ -597,11 +609,11 @@ def main():
         # See more about loading custom images at
         # https://huggingface.co/docs/datasets/v2.4.0/en/image_load#imagefolder
 
-    def check_image(example):
-        w, h = example["width"], example["height"]
-        if w < args.resolution or h < args.resolution:
-            return False
-        return True
+    # def check_image(example):
+    #     w, h = example["width"], example["height"]
+    #     if w < args.resolution or h < args.resolution:
+    #         return False
+    #     return True
 
     # Preprocessing the datasets.
     # We need to tokenize inputs and targets.
@@ -656,6 +668,7 @@ def main():
     # Preprocessing the datasets.
     train_transforms = transforms.Compose(
         [
+            ResizeIfSmaller(args.resolution),
             transforms.RandomCrop(args.resolution),
             # TODO add random vertical flip
             transforms.RandomHorizontalFlip(),
@@ -672,7 +685,7 @@ def main():
 
     with accelerator.main_process_first():
         dataset["train"] = dataset["train"].shuffle(seed=args.seed)
-        dataset["train"] = dataset["train"].filter(lambda example: check_image(example))
+        # dataset["train"] = dataset["train"].filter(lambda example: check_image(example))
         # Set the training transforms
         train_dataset = dataset["train"].with_transform(preprocess_train)
 
