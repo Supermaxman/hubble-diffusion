@@ -784,7 +784,8 @@ def main():
     progress_bar.set_description("Steps")
 
     for epoch in range(first_epoch, args.num_train_epochs):
-        train_dataset.set_epoch(epoch)
+        if args.dataset_streaming:
+            train_dataset.set_epoch(epoch)
         unet.train()
         train_loss = 0.0
         for step, batch in enumerate(train_dataloader):
