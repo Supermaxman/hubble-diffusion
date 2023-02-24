@@ -37,6 +37,10 @@ from packaging import version
 from torchvision import transforms
 from tqdm.auto import tqdm
 from transformers import CLIPTextModel, CLIPTokenizer
+import PIL
+from PIL import Image
+
+PIL.Image.MAX_IMAGE_PIXELS = 1e20
 
 import diffusers
 from diffusers import (
