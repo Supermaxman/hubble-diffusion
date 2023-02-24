@@ -668,16 +668,12 @@ def main():
     # DataLoaders creation:
     train_dataloader = torch.utils.data.DataLoader(
         train_dataset,
-        shuffle=not args.dataset_streaming,
+        shuffle=False,
         collate_fn=collate_fn,
         batch_size=args.train_batch_size,
         num_workers=args.num_workers,
     )
-    dataset_size = (
-        len(train_dataset)
-        if not args.dataset_streaming
-        else train_dataset.info.splits["train"].num_examples
-    )
+    dataset_size = train_dataset.info.splits["train"].num_examples
     dataloader_size = int(math.ceil(dataset_size / args.train_batch_size))
 
     # Scheduler and math around the number of training steps.
@@ -784,8 +780,7 @@ def main():
     progress_bar.set_description("Steps")
 
     for epoch in range(first_epoch, args.num_train_epochs):
-        if args.dataset_streaming:
-            train_dataset.set_epoch(epoch)
+        train_dataset.set_epoch(epoch)
         unet.train()
         train_loss = 0.0
         for step, batch in enumerate(train_dataloader):
