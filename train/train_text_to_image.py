@@ -239,7 +239,7 @@ def parse_args():
         ),
     )
     parser.add_argument(
-        "--dataloader_num_workers",
+        "--num_workers",
         type=int,
         default=0,
         help=(
@@ -671,7 +671,7 @@ def main():
         shuffle=not args.dataset_streaming,
         collate_fn=collate_fn,
         batch_size=args.train_batch_size,
-        num_workers=args.dataloader_num_workers,
+        num_workers=args.num_workers,
     )
     dataset_size = (
         len(train_dataset)
