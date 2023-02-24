@@ -591,7 +591,10 @@ def main():
         )
         train_dataset = dataset["train"]
         if not args.dataset_streaming:
+            dataset_size = len(train_dataset)
             train_dataset = train_dataset.to_iterable_dataset()
+        else:
+            dataset_size = train_dataset.info.splits["train"].num_examples
     else:
         data_files = {}
         if args.train_data_dir is not None:
@@ -602,6 +605,8 @@ def main():
             cache_dir=args.cache_dir,
         )
         train_dataset = dataset["train"]
+        dataset_size = len(train_dataset)
+        train_dataset = train_dataset.to_iterable_dataset()
         # See more about loading custom images at
         # https://huggingface.co/docs/datasets/v2.4.0/en/image_load#imagefolder
 
@@ -673,7 +678,7 @@ def main():
         batch_size=args.train_batch_size,
         num_workers=args.num_workers,
     )
-    dataset_size = train_dataset.info.splits["train"].num_examples
+
     dataloader_size = int(math.ceil(dataset_size / args.train_batch_size))
 
     # Scheduler and math around the number of training steps.
