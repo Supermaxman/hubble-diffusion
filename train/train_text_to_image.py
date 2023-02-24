@@ -365,6 +365,12 @@ def parse_args():
         ),
     )
     parser.add_argument(
+        "--project_name",
+        type=str,
+        default="text2image-fine-tune",
+        help="The name of the project to use for logging and tracking.",
+    )
+    parser.add_argument(
         "--enable_xformers_memory_efficient_attention",
         action="store_true",
         help="Whether or not to use xformers.",
@@ -743,7 +749,7 @@ def main():
     # We need to initialize the trackers we use, and also store our configuration.
     # The trackers initializes automatically on the main process.
     if accelerator.is_main_process:
-        accelerator.init_trackers("text2image-fine-tune", config=vars(args))
+        accelerator.init_trackers(args.project_name, config=vars(args))
 
     # Train!
     total_batch_size = (
