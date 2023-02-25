@@ -82,7 +82,7 @@ We recommend using [🤗's Diffusers library](https://github.com/huggingface/dif
 ### Usage
 
 ```bash
-!pip install transformers diffusers accelerate
+pip install transformers diffusers accelerate
 ```
 
 ```python
