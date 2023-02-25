@@ -76,6 +76,8 @@ Put in a detailed text prompt and generate high-quality Hubble Deep Space Images
         howpublished= {\url{https://huggingface.co/Supermaxman/hubble-diffusion-2}}
       } 
 
+Also, be sure to check out the prior version [Hubble Diffusion v1](https://huggingface.co/Supermaxman/hubble-diffusion-1)!
+
 ## Examples
 
 We recommend using [🤗's Diffusers library](https://github.com/huggingface/diffusers) to run Hubble Diffusion.
