@@ -117,10 +117,10 @@ Trained by [Maxwell Weinzierl](https://personal.utdallas.edu/~maxwell.weinzierl/
 ## Citation
 
 ```bibtex
-     @misc{weinzierl2023sdhubble1,
-        author = {Weinzierl, Maxwell A.},
-        title = {Hubble Diffusion v1: Stable Diffusion v1.4 fine tuned on ESA Hubble Deep Space Images & Captions},
-        year={2023},
-        howpublished= {\url{https://huggingface.co/Supermaxman/hubble-diffusion-1}}
-      } 
+@misc{weinzierl2023sdhubble1,
+  author = {Weinzierl, Maxwell A.},
+  title = {Hubble Diffusion v1: Stable Diffusion v1.4 fine tuned on ESA Hubble Deep Space Images & Captions},
+  year={2023},
+  howpublished= {\url{https://huggingface.co/Supermaxman/hubble-diffusion-1}}
+} 
 ```
