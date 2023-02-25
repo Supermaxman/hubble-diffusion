@@ -75,6 +75,8 @@ Put in a detailed text prompt and generate Hubble Deep Space Images!
         howpublished= {\url{https://huggingface.co/Supermaxman/hubble-diffusion-1}}
       } 
 
+Also, be sure to check out the new and improved [Hubble Diffusion v2](https://huggingface.co/Supermaxman/hubble-diffusion-2)!
+
 ## Examples
 
 We recommend using [🤗's Diffusers library](https://github.com/huggingface/diffusers) to run Hubble Diffusion.
@@ -111,6 +113,7 @@ Trained on [ESA Hubble Deep Space Images & Captions](https://huggingface.co/data
 - [Captioned Hubble Deep Space Scans dataset](https://huggingface.co/datasets/Supermaxman/esa-hubble)
 - [Model weights in Diffusers format](https://huggingface.co/Supermaxman/hubble-diffusion-1)
 - [Training code](https://github.com/Supermaxman/HubbleDiffuser)
+- [Hubble Diffusion v2](https://huggingface.co/Supermaxman/hubble-diffusion-2)
 
 Trained by [Maxwell Weinzierl](https://personal.utdallas.edu/~maxwell.weinzierl/) ([@Supermaxman1](https://twitter.com/Supermaxman1)).
 
