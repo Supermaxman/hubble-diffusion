@@ -38,28 +38,33 @@ Each of the following `3x3` examples took just over a minute to generate:
  > weight of their own gravity and the outer layers explode as a 'supernova'. In this image Hubble
  > captures the moments after collapse, where the star has exploded and left an empty void in its
  > place, where a new black hole has emerged.
->![old.png](https://github.com/Supermaxman/hubble-diffusion/blob/04da8c799098d27c59610b92c15a00fbfa21a1ea/examples/hubble-diffusion-2/old.png?raw=true)
+
+![old.png](https://github.com/Supermaxman/hubble-diffusion/blob/04da8c799098d27c59610b92c15a00fbfa21a1ea/examples/hubble-diffusion-2/old.png?raw=true)
 
  > Pink-tinted plumes in the Large Magellanic Cloud:
  > The aggressively pink plumes seen in this image are extremely uncommon,
  > with purple-tinted currents and nebulous strands reaching out into the surrounding space.
- >![pink.png](https://github.com/Supermaxman/hubble-diffusion/blob/04da8c799098d27c59610b92c15a00fbfa21a1ea/examples/hubble-diffusion-2/pink.png?raw=true)
+
+![pink.png](https://github.com/Supermaxman/hubble-diffusion/blob/04da8c799098d27c59610b92c15a00fbfa21a1ea/examples/hubble-diffusion-2/pink.png?raw=true)
 
  > Hubble snaps images of the birthplace of stars within a cluster:
  > The dust and gas expand within the cluster due to the powerful influence of baby stars.
  > With these new images comes improved detail and a clearer view for astronomers to
  > study how early stars are born and change over time.
->![baby.png](https://github.com/Supermaxman/hubble-diffusion/blob/04da8c799098d27c59610b92c15a00fbfa21a1ea/examples/hubble-diffusion-2/baby.png?raw=true)
+
+![baby.png](https://github.com/Supermaxman/hubble-diffusion/blob/04da8c799098d27c59610b92c15a00fbfa21a1ea/examples/hubble-diffusion-2/baby.png?raw=true)
 
  > Hubble image of galaxies colliding: The distorted spirals of two distant galaxies colliding are
  > captured here in a new image from the NASA/ESA Hubble Space Telescope. The typically symmetric
  > spirals common in spiral galaxies appear significantly warped, as the shape of both galaxies is torn
  > apart by their gravitational pulls.
->![collide.png](https://github.com/Supermaxman/hubble-diffusion/blob/04da8c799098d27c59610b92c15a00fbfa21a1ea/examples/hubble-diffusion-2/collide.png?raw=true)
+
+![collide.png](https://github.com/Supermaxman/hubble-diffusion/blob/04da8c799098d27c59610b92c15a00fbfa21a1ea/examples/hubble-diffusion-2/collide.png?raw=true)
 
  > The stellar plasma of Wolf 359: The red dwarf star Wolf 359 from the constellation Leo is captured in extreme detail in a new image from the NASA/ESA Hubble Space Telescope.
  > Wolf 359, classified as a M6 red dwarf, has certain peculiar qualities indicated by an unusual ejection of plasma. The Hubble telescope was able to capture one such event
->![wolf359.png](https://github.com/Supermaxman/hubble-diffusion/blob/04da8c799098d27c59610b92c15a00fbfa21a1ea/examples/hubble-diffusion-2/wolf359.png?raw=true)
+
+![wolf359.png](https://github.com/Supermaxman/hubble-diffusion/blob/04da8c799098d27c59610b92c15a00fbfa21a1ea/examples/hubble-diffusion-2/wolf359.png?raw=true)
 
 More examples can be found in the [GitHub repository](https://github.com/Supermaxman/hubble-diffusion).
 
@@ -71,12 +76,14 @@ Each of the following examples took just over an hour to generate, but are absol
 
 > Aqua-tinted plumes in the Large Magellanic Cloud:
 > The deep aqua plumes seen in this image are extremely uncommon, with purple-tinted currents and nebulous strands reaching out into the surrounding space.
->![aqua-2560-1536-128.png](https://github.com/Supermaxman/hubble-diffusion/blob/04da8c799098d27c59610b92c15a00fbfa21a1ea/examples/hubble-diffusion-2/aqua-2560-1536-128.png?raw=true)
+
+![aqua-2560-1536-128.png](https://github.com/Supermaxman/hubble-diffusion/blob/04da8c799098d27c59610b92c15a00fbfa21a1ea/examples/hubble-diffusion-2/aqua-2560-1536-128.png?raw=true)
 
 > A slow and deadly dance:
 Most solar systems only contain a single star, while rarely binary star systems can contain two stars closely orbiting each other.
 > With this new image, Hubble captures an extremely rare trinary star system, where three stars orbit each other in a daring yet dangerous dance.
->![trinary-2560-1536-257.png](https://github.com/Supermaxman/hubble-diffusion/blob/04da8c799098d27c59610b92c15a00fbfa21a1ea/examples/hubble-diffusion-2/trinary-2560-1536-257.png?raw=true)
+
+![trinary-2560-1536-257.png](https://github.com/Supermaxman/hubble-diffusion/blob/04da8c799098d27c59610b92c15a00fbfa21a1ea/examples/hubble-diffusion-2/trinary-2560-1536-257.png?raw=true)
 
 ## Model Details
 
@@ -126,7 +133,7 @@ image = pipe(prompt).images[0]
 image
 ```
 
->![example.png](https://github.com/Supermaxman/hubble-diffusion/blob/04da8c799098d27c59610b92c15a00fbfa21a1ea/examples/hubble-diffusion-2/example.png?raw=true)
+![example.png](https://github.com/Supermaxman/hubble-diffusion/blob/04da8c799098d27c59610b92c15a00fbfa21a1ea/examples/hubble-diffusion-2/example.png?raw=true)
 
 #### 2560x1536 MultiDiffusion Generation
 
@@ -152,7 +159,7 @@ image = pipe(prompt).images[0]
 image
 ```
 
->![trinary-2560-1536-258.png](https://github.com/Supermaxman/hubble-diffusion/blob/e76b22c805eea07e376f23ad12bb9ddecfd47cca/examples/hubble-diffusion-2/trinary-2560-1536-258.png?raw=true)
+![trinary-2560-1536-258.png](https://github.com/Supermaxman/hubble-diffusion/blob/e76b22c805eea07e376f23ad12bb9ddecfd47cca/examples/hubble-diffusion-2/trinary-2560-1536-258.png?raw=true)
 
 ## Model description
 
