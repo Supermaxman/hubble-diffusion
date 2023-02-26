@@ -42,21 +42,21 @@ Put in a detailed text prompt and generate Hubble Deep Space Images!
  > captures the moments after collapse, where the star has exploded and left an empty void in its
  > place, where a new black hole has emerged.
 
-![old.png](https://github.com/Supermaxman/HubbleDiffuser/blob/02a359c183dc5fb769e8d4d023daf27906e30334/examples/hubble-diffusion-1/old.png?raw=true)
+![old.png](https://github.com/Supermaxman/hubble-diffusion/blob/e76b22c805eea07e376f23ad12bb9ddecfd47cca/examples/hubble-diffusion-1/old.png?raw=true)
 
  > Hubble snaps images of the birthplace of stars within a cluster:
  > The dust and gas expand within the cluster due to the powerful influence of baby stars.
  > With these new images comes improved detail and a clearer view for astronomers to
  > study how early stars are born and change over time.
 
-![baby.png](https://github.com/Supermaxman/HubbleDiffuser/blob/02a359c183dc5fb769e8d4d023daf27906e30334/examples/hubble-diffusion-1/baby.png?raw=true)
+![baby.png](https://github.com/Supermaxman/hubble-diffusion/blob/e76b22c805eea07e376f23ad12bb9ddecfd47cca/examples/hubble-diffusion-1/baby.png?raw=true)
 
  > Hubble image of galaxies colliding: The distorted spirals of two distant galaxies colliding are
  > captured here in a new image from the NASA/ESA Hubble Space Telescope. The typically symmetric
  > spirals common in spiral galaxies appear significantly warped, as the shape of both galaxies is torn
  > apart by their gravitational pulls.
 
-![collide.png](https://github.com/Supermaxman/HubbleDiffuser/blob/02a359c183dc5fb769e8d4d023daf27906e30334/examples/hubble-diffusion-1/collide.png?raw=true)
+![collide.png](https://github.com/Supermaxman/hubble-diffusion/blob/e76b22c805eea07e376f23ad12bb9ddecfd47cca/examples/hubble-diffusion-1/collide.png?raw=true)
 
 ## Model Details
 
@@ -64,16 +64,18 @@ Put in a detailed text prompt and generate Hubble Deep Space Images!
 - **Model type:** Diffusion-based text-to-image generation model
 - **Language(s):** English
 - **License:** [The CreativeML OpenRAIL M license](https://huggingface.co/spaces/CompVis/stable-diffusion-license) is an [Open RAIL M license](https://www.licenses.ai/blog/2022/8/18/naming-convention-of-responsible-ai-licenses), adapted from the work that [BigScience](https://bigscience.huggingface.co/) and [the RAIL Initiative](https://www.licenses.ai/) are jointly carrying in the area of responsible AI licensing. See also [the article about the BLOOM Open RAIL license](https://bigscience.huggingface.co/blog/the-bigscience-rail-license) on which our license is based.
-- **Model Description:** This is a model that can be used to generate and modify images based on text prompts. It is a [Latent Diffusion Model](https://arxiv.org/abs/2112.10752) that uses a fixed, pretrained text encoder ([CLIP ViT-L/14](https://arxiv.org/abs/2103.00020)) as suggested in the [Imagen paper](https://arxiv.org/abs/2205.11487).
+- **Model Description:** This is a model that can be used to generate and modify images based on text prompts. It is a [Latent Diffusion Model](https://arxiv.org/abs/2112.10752) that uses a fixed, pretrained text encoder ([CLIP ViT-L/14](https://arxiv.org/abs/2103.00020)) as suggested in the [Imagen paper](https://arxiv.org/abs/2205.11487), with initial weights from [CompVis/stable-diffusion-v1-4](https://huggingface.co/CompVis/stable-diffusion-v1-4). It was fine-tuned on [Supermaxman/esa-hubble](https://huggingface.co/datasets/Supermaxman/esa-hubble).
 - **Resources for more information:** [GitHub Repository](https://github.com/CompVis/stable-diffusion), [Paper](https://arxiv.org/abs/2112.10752).
 - **Cite as:**
 
-      @misc{weinzierl2023sdhubble1,
-        author = {Weinzierl, Maxwell A.},
-        title = {Hubble Diffusion v1: Stable Diffusion v1.4 fine tuned on ESA Hubble Deep Space Images & Captions},
-        year={2023},
-        howpublished= {\url{https://huggingface.co/Supermaxman/hubble-diffusion-1}}
-      } 
+```bibtex
+@misc{weinzierl2023sdhubble1,
+  author = {Weinzierl, Maxwell A.},
+  title = {Hubble Diffusion v1: Stable Diffusion v1.4 fine tuned on ESA Hubble Deep Space Images & Captions},
+  year={2023},
+  howpublished= {\url{https://huggingface.co/Supermaxman/hubble-diffusion-1}}
+} 
+```
 
 Also, be sure to check out the new and improved [Hubble Diffusion v2](https://huggingface.co/Supermaxman/hubble-diffusion-2)!
 
@@ -102,7 +104,7 @@ image = pipe(prompt).images[0]
 image
 ```
 
-![example.png](https://github.com/Supermaxman/HubbleDiffuser/blob/ef399e27d09746d5bf16c51b051de04dac072cc2/examples/hubble-diffusion-1/example.png?raw=true)
+![example.png](https://github.com/Supermaxman/hubble-diffusion/blob/e76b22c805eea07e376f23ad12bb9ddecfd47cca/examples/hubble-diffusion-1/example.png?raw=true)
 
 ## Model description
 
@@ -112,7 +114,7 @@ Trained on [ESA Hubble Deep Space Images & Captions](https://huggingface.co/data
 
 - [Captioned Hubble Deep Space Scans dataset](https://huggingface.co/datasets/Supermaxman/esa-hubble)
 - [Model weights in Diffusers format](https://huggingface.co/Supermaxman/hubble-diffusion-1)
-- [Training code](https://github.com/Supermaxman/HubbleDiffuser)
+- [Training code](https://github.com/Supermaxman/hubble-diffusion)
 - [Hubble Diffusion v2](https://huggingface.co/Supermaxman/hubble-diffusion-2)
 
 Trained by [Maxwell Weinzierl](https://personal.utdallas.edu/~maxwell.weinzierl/) ([@Supermaxman1](https://twitter.com/Supermaxman1)).
