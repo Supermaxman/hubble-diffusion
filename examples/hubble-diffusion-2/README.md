@@ -79,6 +79,31 @@ Each of the following examples took just over an hour to generate, but are absol
 
 ![aqua-2560-1536-128.png](https://github.com/Supermaxman/hubble-diffusion/blob/04da8c799098d27c59610b92c15a00fbfa21a1ea/examples/hubble-diffusion-2/aqua-2560-1536-128.png?raw=true)
 
+>Stars out of space:
+>The imaged star cluster sits at the edge of a large emission nebula that stretches through the vastness of space. Part of the nebula is ionized by the youngest (bluest) heavy stars, creating a bubble-like shape in the gas clouds surrounding this region.
+
+![emission-2560-1536-128.png](https://github.com/Supermaxman/hubble-diffusion/blob/62c6b74a02cf5ab24eb0d917919ff0c6dbe4fe53/examples/hubble-diffusion-2/emission-2560-1536-701.png?raw=true)
+
+>Hubble image of galaxies colliding:
+>The distorted spirals of two distant galaxies colliding are captured here in a new image from the NASA/ESA Hubble Space Telescope. The typically symmetric spirals common in spiral galaxies appear significantly warped, as the shape of both galaxies is torn apart by their gravitational pulls.
+
+![collide-2560-1536-128.png](https://github.com/Supermaxman/hubble-diffusion/blob/62c6b74a02cf5ab24eb0d917919ff0c6dbe4fe53/examples/hubble-diffusion-2/collide-2560-1536-901.png?raw=true)
+
+>Hubble watches waves of light from enigmatic erupting star:
+>Captured by the Hubble Space Telescope\'s Advanced Camera for Surveys, this image provides a look into how light can ride waves of ejected gas as the gas expanding through space away from the star.
+
+![echo-2560-1536-128.png](https://github.com/Supermaxman/hubble-diffusion/blob/62c6b74a02cf5ab24eb0d917919ff0c6dbe4fe53/examples/hubble-diffusion-2/echo-2560-1536-1201.png?raw=true)
+
+>Hubble image of a colorful ringed nebula:
+>A new vibrant ring-shaped nebula was imaged by the NASA/ESA Hubble Space Telescope. The nebular looks like an egg shape with a diffusion of the boundary into the surrounding night sky.
+
+![ring-2560-1536-128.png](https://github.com/Supermaxman/hubble-diffusion/blob/62c6b74a02cf5ab24eb0d917919ff0c6dbe4fe53/examples/hubble-diffusion-2/ring-2560-1536-1004.png?raw=true)
+
+>The stellar plasma of Wolf 359:
+>The red dwarf star Wolf 359 from the constellation Leo is captured in extreme detail in a new image from the NASA/ESA Hubble Space Telescope. Wolf 359, classified as a M6 red dwarf, has certain peculiar qualities indicated by an unusual ejection of plasma. The Hubble telescope was able to capture one such event
+
+![wolf359-2560-1536-128.png](https://github.com/Supermaxman/hubble-diffusion/blob/62c6b74a02cf5ab24eb0d917919ff0c6dbe4fe53/examples/hubble-diffusion-2/wolf359-2560-1536-600.png?raw=true)
+
 > A slow and deadly dance:
 Most solar systems only contain a single star, while rarely binary star systems can contain two stars closely orbiting each other.
 > With this new image, Hubble captures an extremely rare trinary star system, where three stars orbit each other in a daring yet dangerous dance.
